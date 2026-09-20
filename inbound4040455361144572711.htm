@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>redx mangas ❤️ iali</title>
+  <style>
+    /* FOND AVEC VOTRE PHOTO */
+    body{
+      margin:0; padding:15px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(rgba(255,255,255,0.88), rgba(255,235,238,0.92)), url('iali.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+    .logo{
+      background:white; color:#c0392b; padding:6px 14px; border-radius:50px;
+      font-weight:900; letter-spacing:2px; text-transform:uppercase;
+      box-shadow:0 3px 10px rgba(0,0,0,.15); display:inline-block; font-size:12px;
+    }
+    h1{
+      background:rgba(255,255,255,.85); backdrop-filter:blur(8px);
+      padding:15px; border-radius:14px; border-left:6px solid #c0392b;
+      box-shadow:0 5px 20px rgba(0,0,0,.1); font-size:26px;
+    }
+    .photo-love{
+      text-align:center; margin:10px 0 20px 0;
+    }
+    .photo-love img{
+      width:92%; max-width:340px; border-radius:20px;
+      box-shadow:0 10px 30px rgba(192,57,43,.5);
+      border:4px solid white; transform: rotate(-1.5deg);
+    }
+    .photo-love p{ background:none; box-shadow:none; color:#c0392b; font-weight:bold; font-size:13px; margin-top:8px;}
+    p, ol{background:white; padding:12px 16px; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,.07);}
+    input{width:100%; padding:12px; margin:12px 0; border:2px solid #c0392b; border-radius:12px; box-sizing:border-box; background:rgba(255,255,255,.9);}
+    table{width:100%; border-collapse:collapse; background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,.15);}
+    thead{background:#c0392b; color:white;} th,td{padding:10px; text-align:center; border-bottom:1px solid #ffebee; font-size:13px;}
+    tbody tr:nth-child(even){background:#ffebee;} tbody tr:hover{background:#ff8a80; color:white;}
+    tfoot{background:#ef5350; color:white; font-weight:bold;}
+    #cards{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+    .card{background:rgba(255,255,255,.95); border-radius:12px; padding:12px; box-shadow:0 3px 10px rgba(0,0,0,.1); border-top:4px solid #c0392b;}
+  </style>
+</head>
+<body>
+
+<div class="logo">redx mangas</div>
+<h1>page pour toutes les personnes qui aiment lire les manga</h1>
+
+<div class="photo-love">
+  <img src="iali.jpg" alt="ma main et mon amour">
+  <p>iali.jpg ❤️ ma main et mon amour</p>
+</div>
+
+<p>premièrement voici toutes les type <strong>de manga</strong> qui existent.</p>
+<ol><li>Isekai</li><li>Tensei</li><li>Action</li></ol>
+
+<input type="text" id="search" placeholder="🔍 Cherche ton animé...">
+
+<table id="animeTable">
+  <thead><tr><th>#</th><th>Animé</th><th>Ép</th><th>Date</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>One Piece</td><td>1100+</td><td>1999</td></tr>
+    <tr><td>2</td><td>Naruto Shippuden</td><td>500</td><td>2007</td></tr>
+    <tr><td>3</td><td>Attack on Titan</td><td>87</td><td>2013</td></tr>
+    <tr><td>4</td><td>Death Note</td><td>37</td><td>2006</td></tr>
+    <tr><td>5</td><td>Demon Slayer</td><td>55+</td><td>2019</td></tr>
+    <tr><td>6</td><td>Jujutsu Kaisen</td><td>47+</td><td>2020</td></tr>
+    <tr><td>7</td><td>Dragon Ball Z</td><td>291</td><td>1989</td></tr>
+    <tr><td>8</td><td>Bleach</td><td>366</td><td>2004</td></tr>
+    <tr><td>9</td><td>Hunter x Hunter</td><td>148</td><td>2011</td></tr>
+    <tr><td>10</td><td>My Hero Academia</td><td>138+</td><td>2016</td></tr>
+    <tr><td>16</td><td>Solo Leveling</td><td>25+</td><td>2024</td></tr>
+    <tr><td>20</td><td>Spy x Family</td><td>37+</td><td>2022</td></tr>
+  </tbody>
+  <tfoot><tr><td colspan="4" id="compteur">12 animés ❣️</td></tr></tfoot>
+</table>
+
+<h2 style="margin-top:25px; border-left:6px solid #c0392b; padding-left:12px; background:white; display:inline-block; padding:8px 12px; border-radius:8px;">Résumés</h2>
+<div id="cards"></div>
+
+<script>
+const animes=[
+  {nom:"One Piece",genre:"Aventure",resume:"Luffy veut devenir Roi des Pirates."},
+  {nom:"Naruto",genre:"Ninja",resume:"Devenir Hokage et sauver ses amis."},
+  {nom:"Solo Leveling",genre:"Isekai",resume:"Le plus faible devient le plus fort."},
+  {nom:"Death Note",genre:"Thriller",resume:"Un cahier qui tue."},
+];
+const zone=document.getElementById('cards');
+animes.forEach(a=>{zone.innerHTML+=`<div class="card"><b style="color:#c0392b">${a.nom}</b><br><small>${a.genre}</small><p style="font-size:12px;margin:5px 0 0 0">${a.resume}</p></div>`;});
+
+document.getElementById('search').addEventListener('input',function(){
+  let mot=this.value.toLowerCase();
+  document.querySelectorAll('#animeTable tbody tr').forEach(l=>{
+    l.style.display=l.innerText.toLowerCase().includes(mot)?"":"none";
+  });
+});
+</script>
+<footer>
+<p>khiff❣️....dvllpr Mada </p>
+<p>khifffk@gmail.com</p>
+</footer>
+</body>
+</html>
